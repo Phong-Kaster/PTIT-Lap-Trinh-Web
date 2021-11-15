@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xsi:schemaLocation="http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-4.0.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    
+    <http use-expressions="true" auto-config="true">
+        <csrf disabled="true"/>
+        
+
+        <intercept-url pattern="/" access="permitAll()" />
+        <intercept-url pattern="/admin.htm" access="permitAll()" />
+        <intercept-url pattern="/logout.htm" access="permitAll()" />
+
+
+        <intercept-url pattern="/dashboard.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_CONTRIBUTOR')" />
+        <intercept-url pattern="/admin/media.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_CONTRIBUTOR')" />
+        <intercept-url pattern="/admin/posts.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_CONTRIBUTOR')" />
+        <intercept-url pattern="/admin/post.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_CONTRIBUTOR')" />
+        
+        
+        <intercept-url pattern="/admin/comment.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR')" />
+        <intercept-url pattern="/admin/response-comment-**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR')" />
+        
+        <intercept-url pattern="/admin/categories.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR')" />
+        <intercept-url pattern="/admin/add-category.htm" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR')" />
+        <intercept-url pattern="/admin/edit-category-**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR')" />
+        
+        <intercept-url pattern="/admin/widget.htm" access="hasAnyRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/menu.htm" access="hasAnyRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/settings/**" access="hasAnyRole('ROLE_ADMIN')" />
+        
+        <intercept-url pattern="/admin/information-pages.htm" access="hasAnyRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/add-information-page.htm" access="hasAnyRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/edit-information-page-**" access="hasAnyRole('ROLE_ADMIN')" />
+ 
+        
+        <intercept-url pattern="/admin/**" access="isAuthenticated()" />
+        
+        
+        <access-denied-handler error-page="/403.htm" />
+
+ 		<custom-filter ref="recaptchaVerification" before="FORM_LOGIN_FILTER"/>
+ 
+        <form-login login-page='/admin.htm' login-processing-url="/login.htm"
+            default-target-url="/dashboard.htm" always-use-default-target="false"
+            authentication-failure-url="/admin.htm?error=true" username-parameter="username"
+            password-parameter="password" />
+
+        <logout logout-url="/logout.htm" logout-success-url="/admin.htm?logout=true"
+            delete-cookies="JSESSIONID" invalidate-session="true" />
+        
+        <remember-me key="uniqueAndSecret" token-validity-seconds="1296000"/>
+        
+       
+
+    </http>
+     
+ 	<beans:bean id="recaptchaVerification" class="filters.CaptchaFilter" p:failureUrl="/admin.htm?error=true"/>
+    
+
+    <authentication-manager>
+        <!-- authentication from database -->
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dataSource"
+                users-by-username-query="select email, password, is_active enabled from users where email=?"
+                authorities-by-username-query="select email, concat('ROLE_', account_type) user_role from users where email=?" />
+            <password-encoder hash="bcrypt" />
+        </authentication-provider>
+
+    </authentication-manager>
+
+</beans:beans>

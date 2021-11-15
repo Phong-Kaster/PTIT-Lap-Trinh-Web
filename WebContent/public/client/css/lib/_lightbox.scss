@@ -1,0 +1,369 @@
+/* Magnific Popup
+--------------------- */
+html.lightbox-open {
+    overflow: hidden;
+}
+.white-popup-block {
+    background: #fff;
+    z-index: 999999;
+    padding: 30px 30px;
+    text-align: left;
+    max-width: 800px;
+    margin: 40px auto;
+}
+.mfp-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .5s, opacity .3s;
+}
+.mfp-ready .mfp-content {
+    opacity: 1;
+    visibility: visible;
+}
+.mfp-bg {
+    z-index: 11042;
+}
+.mfp-wrap {
+    z-index: 11043;
+}
+
+/* Loader
+------------------------ */
+.mfp-preloader {
+    display: block;
+    z-index: 9999;
+    direction: ltr;
+    
+    &:before {
+        @extend .feather;
+        @extend .feather-loader;
+        @extend .fa-spin;
+        display: inline-block;
+        
+        margin-right: 6px;
+    }
+    color: white;
+    
+    height: 40px;
+    text-align: center;
+}
+.mfp-s-error .mfp-preloader {
+    text-indent: 0;
+    background: none;
+}
+.mfp-s-error .mfp-preloader a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Animation
+------------------------ */
+.mfp-gallery {
+    .mfp-figure {
+        @include transition( all .1s $ease-out-back );
+        
+        opacity: 0;
+        visibility: hidden;
+        // @include transform ( scale(.99) );
+    }
+    &.mfp-image-loaded .mfp-figure {
+        
+        opacity: 1;
+        visibility: visible;
+        // @include transform ( scale(1) );
+    }
+    &.mfp-image-loaded.mfp-removing .mfp-figure {
+        opacity: 0;
+        visibility: hidden;
+        // @include transform ( scale(.95) );
+    }
+}
+
+/* Frame
+------------------------ */
+.mfp-bg {
+    background: rgba(0,0,0,.9);
+    opacity: 1;
+    color: #fff;
+    @include transition( all 0.4s $ease-out-cubic );
+}
+.mfp-bg.mfp-removing {
+    opacity: 0;
+}
+.mfp-figure:after {
+    display: none;
+}
+.mfp-iframe-scaler iframe {
+    box-shadow: none;
+    background: none;
+}
+.mfp-wrap {
+    color: #fff;
+}
+.mfp-figure {
+    
+    figure {
+        position: relative;
+        > img {
+            display: block;
+            order: 2;
+        }
+    }
+    figcaption {
+        order: 1;
+        position: absolute;
+        bottom: 40px;
+        top: 40px;
+        right: 100%;
+        width: 150px;
+        margin-right: 1.5em;
+        text-align: right;
+        
+        display: flex;
+        align-items: flex-end;
+    }
+}
+.mfp-title {
+    padding: 0;
+    font-size: 1em;
+    text-align: inherit;
+    display: block;
+    width: 100%;
+    flex: none;
+    
+    a {
+    
+    }
+    
+    p {
+        margin: 0;
+    }
+}
+.lightbox-caption-long {
+    font-size: .8em;
+}
+.mfp-counter {
+    position: absolute;
+    bottom: auto;
+    top: 5%;
+    right: 0;
+    left: auto;
+    
+    .total {
+        font-size: 1.5em;
+        margin-left: 4px;
+        vertical-align: text-top;
+    }
+}
+.mfp-bottom-bar {
+    margin: 0;
+    position: static !important;
+}
+
+// 150px width for the caption, so under 1100px, we'll display the caption differently
+@media (max-width: 1100px) {
+    .mfp-figure figcaption {
+        background: rgba(0,0,0,.9);
+        background: linear-gradient(transparent, rgba(0,0,0,0.6));
+        color: white;
+        left: 0;
+        right: auto;
+        top: auto;
+        padding: 10px 16px;
+        text-align: left;
+        width: auto;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .mfp-title {
+        width: 60%;
+        max-width: 800px;
+        min-width: 100px;
+    }
+    
+    // smaller
+    .lightbox-caption-short {
+        font-size: .9em;
+    }
+    
+    .mfp-counter {
+        display: none;
+    }
+}
+
+/* Video
+------------------------ */
+.mfp-content .wp-video {
+    max-height: 80%;
+    max-width: 80%;
+    margin: auto;
+}
+.mfp-content .wp-video-shortcode {
+    margin: 0;
+}
+
+/* Cursor
+------------------------ */
+.mfp-zoom-out-cur, 
+.mfp-zoom-out-cur
+.mfp-image-holder .mfp-close {
+    cursor: pointer;
+}
+
+/* Next / Prev
+------------------------ */
+button.mfp-arrow,
+button.mfp-arrow:hover {
+    display: block;
+    background: none;
+    color: inherit;
+    visibility: visible;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    
+    font-size: 24px;
+    
+    top: auto;
+    left: auto;
+    transform: none;
+    
+    padding: 0;
+    margin: 0;
+    
+    i {
+        margin: 0;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        
+        text-shadow: 1px 1px 4px rgba(0,0,0,.6);
+        
+        @include transform(translate(-50%,-50%));
+    }
+}
+button.mfp-arrow {
+    opacity: 1;
+    @incldue transition( color .3s ease-out);
+    color: rgba(255,255,255,.4);
+    
+    &:hover {
+        color: white;
+        opacity: 1;
+    }
+}
+button.mfp-arrow.mfp-arrow-left {
+    bottom: 5%;
+    right: calc(5% + 40px);
+}
+button.mfp-arrow.mfp-arrow-right {
+    bottom: 5%;
+    right: 5%;
+}
+button.mfp-arrow:before,
+button.mfp-arrow:after {
+    display: none;
+}
+
+button.mfp-arrow {
+    opacity: 1;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+/* Close
+------------------------ */
+.mfp-close,
+.mfp-image-holder .mfp-close, 
+.mfp-iframe-holder .mfp-close {
+    position: fixed;
+    top: 5%;
+    left: auto;
+    right: 5%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 26px;
+    color: inherit;
+    cursor: pointer;
+    @include transition( color .3s ease-out );
+    color: rgba(255,255,255,.4);
+    opacity: 1;
+    
+    &:hover {
+        opacity: 1;
+        color: white;
+    }
+    
+}
+.mfp-close:hover,
+.mfp-image-holder .mfp-close:hover, 
+.mfp-iframe-holder .mfp-close:hover {
+    background: none;
+}
+.mfp-close i {
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    @include transform( translate(-50%,-50%) );
+}
+
+.admin-bar .mfp-close {
+    top: 42px;
+}
+
+/* Fix MFP click target
+------------------------ */
+body button.mfp-arrow-left:before,
+body button.mfp-arrow-right:before,
+body .mfp-close:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 40;
+    border: none !important;
+    outline: 0;
+    background: none !important;
+    content: "";
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0;
+}
+
+/* Caption
+------------------------ */
+.mfp-title,
+.mfp-counter {
+    color: inherit;
+}
+
+/* TEXT
+------------------------ */
+.mfp-title {
+    a {
+        color: inherit;
+        outline: 0;
+        text-decoration: none;
+        
+        border-bottom: 1px solid;
+        transition: border-color .15s;
+        
+        &:hover {
+            border-bottom-color: transparent;
+            text-decoration: none;
+        }
+    }
+}
+.mfp-counter {
+}

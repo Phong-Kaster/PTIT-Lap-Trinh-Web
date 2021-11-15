@@ -1,0 +1,46 @@
+// Responsive widths.
+$mobile_portrait_width: 420px;
+$mobile_width: 600px;
+$tablet_width: 840px; // since 4.4, it was 782px in 4.3
+$desktop_width: 1168px;
+$wide_width: 1365px;
+
+@mixin media( $res ) {
+    @if mobile-small == $res {
+		@media only screen and (max-width: $mobile_portrait_width) {
+			@content;
+		}
+	}
+    
+	@else if mobile == $res {
+		@media only screen and (max-width: $mobile_width) {
+			@content;
+		}
+	}
+
+	@else if tablet == $res {
+		@media only screen and (max-width: $tablet_width) {
+			@content;
+		}
+	}
+
+	@else if desktop == $res {
+		@media only screen and (max-width: $desktop_width) {
+			@content;
+		}
+	}
+
+	@else if wide == $res {
+		@media only screen and (max-width: $wide_width) {
+			@content;
+		}
+	}
+    
+    @else {
+        
+        @media only screen and (max-width: $res) {
+			@content;
+		}
+        
+    }
+}

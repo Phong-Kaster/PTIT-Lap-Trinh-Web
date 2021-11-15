@@ -1,0 +1,64 @@
+/****************************************************************
+ *@author Phong
+ *Thu muc public chua toan bo css & javascript cua du an nay
+ * +asset doi ten thanh client
+ * +resource doi ten thanh admin
+ *
+ *Trong nay chua nhung cau lenh tieu chuan de su dung
+ *Cho ... de dien duong dan | gia tri | bieu thuc thich hop
+ ****************************************************************/
+ 
+ 
+ 
+/*************************PUBLIC DIRECTORY STRUCTURE************************
+--public
+	|--admin
+		|--css
+		|--fonts
+		|--js
+		|--pages
+	|--client
+		|--css
+		|--js
+		|--vendor
+		+style.css
+		+style.min.css
+	|--images
+	|--uploads
+****************************************************************/
+
+
+
+/**************************************************
+ * @author Phong
+ * 
+ * @return
+ **************************************************/
+ 
+/*Step */
+
+
+/*************************STANDARD STATMENT*************************/
+
+<!--- TAG LIBRARY --->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="format" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@tablib prefix="form" uri="http://www.springframeword.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@tablib prefix="spring" uri="http://www.springframeword.org/tags" %>
+
+<!--- CSS & JAVASCRIPT --->
+<link rel='stylesheet' href="<c:url value='./public/...'/>"/>
+<script src="<c:url value='./public/...' />"></script>
+
+<!-- THEM CSS VA JAVASCRIPT -->
+<base href="${pageContext.servletContext.contextPath}/"> dĂ¹ng cĂ¡i nĂ y thĂ¬ khĂ´ng cáº§n dĂ¹ng <%@taglib prefix="c" %> ná»¯a 
+CĂº  phĂ¡p: <%@include file="..." %>
+
+
+Admin template URL: https://demo.pixelcave.com/oneui/be_pages_dashboard.html
+Admin timewrite.xyz: https://timeswriter.xyz/login
+
+/*xóa thư viện hibernate.validator.jar -> tạo ra bean -> gây ra xung đột bean sessionFactory
+	các validator ví dụ @notnull, @notEmpty
+*/
