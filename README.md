@@ -1,5 +1,9 @@
-<h1 align="center">Lập Trình Web</h1>
-<h2 align="center">Trang tin tức - xã hội - giải trí</h2>
+<h1 align="center">Lập Trình Web</br>
+Trang tin tức - xã hội - giải trí</h1>
+
+<p align="center"> 
+      <img src="./photoDemo/photo1.png">
+</p>
 
 # [**Table of contents**](#table-of-contents)
 
