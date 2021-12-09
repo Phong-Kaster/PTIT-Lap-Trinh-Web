@@ -1,0 +1,58 @@
+*) Môn: Lập Trình Web
+*) Thầy: Nguyễn Trung Hiếu
+*) Đề tài: Trang tin tức điện tử tổng hợp
+*) Thành viên:
+	1.Nguyễn Đăng Hậu - N18DCCN060
+	2.Lương Đình Khang - N18DCCN093
+	3.Nguyễn Thành Phong - N18DCCN147
+*) Chi tiết nhiệm vụ của từng thành viên
+
+  	1.NGUYỄN ĐĂNG HẬU – N18DCCN060
+	- Thiết kế CSDL
+	- Khai báo Entities( Options, General_Data)
+	- Config hibernate, spring-security, interceptor, mvc
+	- Tính năng đăng nhập
+	- Quản lý bài viết
+	- Quản lý thành viên 
+	- Quản lý đăng ký nhận tin
+	- Quản lý hồ sơ cá nhân
+	- Media
+	- Quản lý widget
+	- Thiết kế trang chủ website
+	- Tính năng tìm kiếm bài viết trên trang chủ
+	- Menu website
+	- Phân quyền
+	- Tích hợp ckeditor, ckfinder
+	
+	2.LƯƠNG ĐÌNH KHANG – N18DCCN093
+	- Khai báo Entities( Posts, Comment, Categories, Menu, Widget, Pages, Posts, Subscribers)
+	- Cắt template admin-settings, forgot password, reset password.
+	- Khai báo, config thư viện mailer
+	- Khai báo GlobalInterceptor.
+	- Cài đặt chung(logo, site, social) 
+	- Tích hợp (recaptcha, google analytics)
+	- Trang tác giả
+	- Tính năng reset password
+	- Tính năng đăng ký nhận tin
+	- Hiển thị thông tin covid
+	- Bình luận bài viết 
+	- Dashboard
+
+	3.NGUYỄN THÀNH PHONG – N18DCCN147
+	- Tạo cấu trúc thư mục chung cho cả project
+	- Tạo paging phân trang chung
+	- Chuyển template thành các file jsp cho front-end phía khách hang
+	- Chuyển template thành các file jsp cho front-end phía người quản trị
+	- Quản lý thể loại bài viết
+	- Quản lý trang thông tin
+	- Quản lý bình luận 
+	- Phản hồi bình luận từ admin
+	- Danh mục thể loại phía khách hàng
+	- Danh mục thông tin phía kháng hàng
+	- Sidebar của website
+	- Quản lý menu header, menu footer
+	- Chức năng kéo thả vị trí menu bằng con trỏ chuột
+	- Khai báo Client-Interceptor & Global-Interceptor
+
+
+
